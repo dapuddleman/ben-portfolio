@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benjamin Lock — Game Programmer / Designer</title>
+  <meta name="description" content="Portfolio of Benjamin Lock, game designer and programmer — 3D action in Unity, bare-metal Game Boy Advance experiments, and atmospheric horror. Georgia Tech Computational Media." />
+  <link rel="icon" type="image/png" href="media/favicon.png" />
+  <!-- Social cards. NOTE: og:image/og:url should be absolute URLs — update the
+       domain below when the site is deployed, or link previews won't show art. -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Benjamin Lock — Game Programmer / Designer" />
+  <meta property="og:description" content="Starfall, Vermillion Hearts, Star is Gone — a portfolio of systems-driven, experimental game work." />
+  <meta property="og:image" content="media/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Benjamin Lock — Game Programmer / Designer" />
+  <meta name="twitter:description" content="Starfall, Vermillion Hearts, Star is Gone — a portfolio of systems-driven, experimental game work." />
+  <meta name="twitter:image" content="media/og-image.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=3" />
+</head>
+<body>
+
+  <!-- ============================================================= -->
+  <!-- FIXED LEFT SIDEBAR (opaque rail — content scrolls behind it)  -->
+  <!-- ============================================================= -->
+  <aside class="sidebar">
+    <a href="#intro" class="logo" aria-label="Benjamin Lock — home">
+      <img src="media/logo.png" class="logo__mark" alt="" draggable="false" />
+    </a>
+
+    <nav class="menu" aria-label="Primary">
+      <ul>
+        <li><a href="#starfall"><span class="menu__label">Starfall</span><span class="menu__num">01</span></a></li>
+        <li><a href="#vermilion"><span class="menu__label">Vermillion Hearts</span><span class="menu__num">02</span></a></li>
+        <li><a href="#stargone"><span class="menu__label">Star is Gone</span><span class="menu__num">03</span></a></li>
+        <li><a href="#about"><span class="menu__label">About</span><span class="menu__num">04</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="brand"><span class="brand__name">BENJAMIN LOCK</span></div>
+
+    <div class="sidebar__bottom">&copy; 2026 Benjamin Lock</div>
+  </aside>
+
+  <!-- Top horizontal scroll-progress bar -->
+  <div class="progress" aria-hidden="true"><span class="progress__bar"></span></div>
+
+  <!-- Scroll hint -->
+  <div class="scroll-hint" aria-hidden="true">
+    <span>SCROLL</span><span class="scroll-hint__arrow">&rarr;</span>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- HORIZONTAL SCROLL CANVAS                                       -->
+  <!-- ============================================================= -->
+  <main id="scroll-container">
+    <div id="track">
+
+      <!-- ===================== INTRO ===================== -->
+      <section class="panel panel--intro" id="intro">
+        <div class="intro">
+          <h1 class="intro__title"><span>Benjamin</span><span class="intro__title--em">Lock</span></h1>
+          <p class="intro__role">Game Programmer &amp; Designer</p>
+          <p class="intro__lede">
+            Systems, worlds, and the strange machines that make them feel alive. A selection of work
+            in 3D action, handheld experimentation, and atmospheric horror.
+          </p>
+        </div>
+
+        <!-- Cascading gameplay stack — sits in the right white space.
+             H.264 loops (not GIF/animated-webp): hardware-decoded, ~2% the bytes. -->
+        <div class="intro-stack" aria-hidden="true">
+          <figure class="intro-stack__item" style="--i:0; --k:0;">
+            <video src="media/crawl/crawl-3.mp4" autoplay muted loop playsinline></video>
+          </figure>
+          <figure class="intro-stack__item" style="--i:1; --k:1;">
+            <video src="media/crawl/crawl-4.mp4" autoplay muted loop playsinline></video>
+          </figure>
+          <figure class="intro-stack__item" style="--i:2; --k:0;">
+            <video src="media/crawl/crawl-1.mp4" autoplay muted loop playsinline></video>
+          </figure>
+          <figure class="intro-stack__item" style="--i:3; --k:1;">
+            <video src="media/crawl/crawl-5.mp4" autoplay muted loop playsinline></video>
+          </figure>
+          <figure class="intro-stack__item" style="--i:4; --k:0;">
+            <video src="media/crawl/crawl-2.mp4" autoplay muted loop playsinline></video>
+          </figure>
+          <figure class="intro-stack__item" style="--i:5; --k:1;">
+            <video src="media/crawl/crawl-6.mp4" autoplay muted loop playsinline></video>
+          </figure>
+          <figure class="intro-stack__item" style="--i:6; --k:0;">
+            <video src="media/crawl/crawl-7.mp4" autoplay muted loop playsinline></video>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ===================== 01 — STARFALL ===================== -->
+      <section class="panel panel--project" id="starfall" data-index="01">
+        <div class="project">
+          <header class="project__head" style="left:15vw;">
+            <span class="project__index">01</span>
+            <h2 class="project__title project__title--graphic">
+              <img src="media/starfall-title.webp" alt="Starfall" loading="eager" decoding="async" draggable="false" />
+            </h2>
+          </header>
+
+          <span class="float-credit" style="left:15vw; top:13vh;">Date: Fall 2022</span>
+          <span class="float-credit" style="left:15vw; top:82vh;">Team Lead:<br />Benjamin Lock</span>
+
+          <!-- Largest image — drag to pan -->
+          <figure class="asset pannable" style="left:28vw; top:12vh; width:47vw; height:73vh;">
+            <div class="pannable__inner">
+              <img src="media/starfall/shot-a.webp" alt="Starfall — combat in the red district" loading="lazy" decoding="async" draggable="false" />
+            </div>
+            <figcaption class="drag-hint">DRAG_HERE</figcaption>
+            <figcaption class="asset__cap">Starfall &mdash; In-Game</figcaption>
+          </figure>
+
+          <figure class="asset" style="left:80vw; top:7vh; width:16vw; height:45vh;">
+            <img src="media/starfall/shot-d.webp" alt="Starfall — canyon vista at 2x multiplier" loading="lazy" decoding="async" draggable="false" />
+            <figcaption class="asset__cap">Score Multiplier &mdash; Vista</figcaption>
+          </figure>
+
+          <!-- Ambient in-engine loop -->
+          <figure class="asset asset--video" style="left:80vw; top:60vh; width:27vw; height:32vh;">
+            <video src="media/starfall/loop.mp4" autoplay muted loop playsinline aria-label="Starfall in-engine background loop"></video>
+            <figcaption class="asset__cap">In-Engine Loop</figcaption>
+          </figure>
+
+          <span class="float-credit" style="left:113vw; top:9vh;">Music &amp; Sound FX:<br />Benjamin Lock &amp; Nicklaus Loo</span>
+
+          <!-- Interactive 3D model -->
+          <figure class="asset asset--model" style="left:113vw; top:17vh; width:33vw; height:66vh;">
+            <model-viewer
+              src="media/kuze.glb"
+              alt="Kuze — Starfall protagonist, rigged character model"
+              loading="eager"
+              reveal="auto"
+              camera-controls
+              disable-zoom
+              touch-action="pan-y"
+              autoplay
+              animation-name="G_idle"
+              auto-rotate
+              auto-rotate-delay="0"
+              rotation-per-second="16deg"
+              interaction-prompt="none"
+              shadow-intensity="0.55"
+              exposure="1.05"
+              environment-image="neutral"></model-viewer>
+            <figcaption class="model-hint">3D &middot; DRAG TO ROTATE</figcaption>
+            <figcaption class="asset__cap asset__cap--dark">Kuze &mdash; Starfall Protagonist</figcaption>
+          </figure>
+
+          <!-- Editorial multi-column body -->
+          <div class="body-text body-text--cols" style="left:152vw; top:30vh; width:37vw;">
+            <p>
+              <span class="body-text__lead">Starfall</span> &mdash; (Team Lead) 3.4M/LA 3D Action-Shooter.
+              Held weekly meetings, managed Agile Scrum pipeline. Programmed AI, combat and movement systems,
+              designed enviro/phenomenal abilities and weapons, created 3D art and materials, coded
+              music-reactive shaders. Worked closely with, and facilitated communication across, artisans
+              to ensure project goals were met.
+            </p>
+          </div>
+
+          <span class="float-credit" style="left:152vw; top:84vh;">Lead UI/UX &amp; 2D Artist:<br />Erin O&rsquo;Connor</span>
+
+          <!-- Weapon design — wide 3D viewer sitting under the body text -->
+          <figure class="asset asset--model" style="left:152vw; top:48vh; width:24vw; aspect-ratio: 21 / 9;">
+            <model-viewer
+              src="media/machinepistol.glb"
+              alt="Starfall machine pistol — weapon design model"
+              loading="lazy"
+              reveal="auto"
+              camera-controls
+              disable-zoom
+              touch-action="pan-y"
+              auto-rotate
+              auto-rotate-delay="0"
+              rotation-per-second="20deg"
+              interaction-prompt="none"
+              shadow-intensity="0.5"
+              exposure="1.05"
+              environment-image="neutral"></model-viewer>
+            <figcaption class="model-hint">3D &middot; DRAG TO ROTATE</figcaption>
+            <figcaption class="asset__cap asset__cap--dark">Machine Pistol &mdash; Weapon Design</figcaption>
+          </figure>
+
+          <!-- Catalog plates — small stills beside the weapon -->
+          <figure class="asset" style="left:178vw; top:48vh; width:14vw; aspect-ratio: 16 / 9;">
+            <img src="media/starfall/shot-b.webp" alt="Starfall — clone ability beams" loading="lazy" decoding="async" draggable="false" />
+            <figcaption class="asset__cap">Ability VFX</figcaption>
+          </figure>
+          <figure class="asset" style="left:178vw; top:70vh; width:14vw; aspect-ratio: 16 / 9;">
+            <img src="media/starfall/shot-c.webp" alt="Starfall — speed blur sequence" loading="lazy" decoding="async" draggable="false" />
+            <figcaption class="asset__cap">Music-Reactive Shader</figcaption>
+          </figure>
+
+          <!-- Full gameplay walkthrough -->
+          <figure class="asset asset--video" style="left:194vw; top:30vh; width:26vw; aspect-ratio: 16 / 9;">
+            <button class="video-poster" type="button" data-yt="oMOeFzSBXzI" aria-label="Play Starfall gameplay walkthrough">
+              <img src="https://i.ytimg.com/vi/oMOeFzSBXzI/hqdefault.jpg" alt="" aria-hidden="true" loading="lazy" />
+              <span class="video-poster__play"></span>
+              <span class="video-poster__label">Starfall &mdash; Gameplay Video</span>
+            </button>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ===================== 02 — VERMILION HEARTS ===================== -->
+      <section class="panel panel--project" id="vermilion" data-index="02">
+        <div class="project">
+          <header class="project__head" style="left:15vw;">
+            <span class="project__index">02</span>
+            <h2 class="project__title project__title--two project__title--fx" data-fx="glitch">Vermillion<br />Hearts</h2>
+          </header>
+
+          <span class="float-credit" style="left:15vw; top:16vh;">Date: Fall 2021</span>
+          <span class="float-credit" style="left:15vw; top:80vh;">All art, programming,<br />design and writing by:<br />Benjamin Lock</span>
+
+          <!-- Playable build — EmulatorJS (mGBA core), GBA-native 3:2 screen.
+               Swap media/vermilion.gba for the real Vermillion Hearts ROM. -->
+          <figure class="asset asset--emu" id="gba-emu" style="left:30vw; top:16vh; width:40vw; aspect-ratio: 3 / 2;" aria-label="Vermillion Hearts — playable GBA build">
+            <div id="gba-player"></div>
+            <figcaption class="model-hint model-hint--light model-hint--emu">GBA &middot; PLAYABLE &mdash; CLICK TO START</figcaption>
+          </figure>
+
+          <figure class="asset asset--glitch" style="left:72vw; top:11vh; width:17vw; aspect-ratio: 16 / 9;">
+            <img src="media/vermillion/seq.webp" alt="Vermillion Hearts — animated glitch sequence" loading="lazy" decoding="async" draggable="false" />
+            <figcaption class="asset__cap">Glitch Sequence</figcaption>
+          </figure>
+
+          <figure class="asset" style="left:72vw; top:49vh; width:23vw; aspect-ratio: 3 / 2;">
+            <img src="media/vermillion/still-b.webp" alt="Vermillion Hearts — conversation system in-game" loading="lazy" decoding="async" draggable="false" />
+            <figcaption class="asset__cap">Conversation System</figcaption>
+          </figure>
+
+          <div class="body-text" style="left:108vw; top:24vh; width:33vw;">
+            <p>
+              <span class="body-text__lead">Vermillion Hearts</span> &mdash; (Sole Responsibility) A C-based
+              Game Boy Advance RPG created as a final project for my Media Device Architecture course.
+              Leveraged custom GBA tools and hardware to create authentic graphical and auditory glitch-driven
+              mechanics to give life to a disintegrating, abandoned fantasy RPG world, along with programming
+              and designing a conversation system, a series of player abilities, and the puzzles that they
+              serve to solve.
+            </p>
+          </div>
+
+          <!-- Catalog plate under the text -->
+          <figure class="asset" style="left:108vw; top:48vh; width:18vw; aspect-ratio: 3 / 2;">
+            <img src="media/vermillion/still-c.webp" alt="Vermillion Hearts — in-game still" loading="lazy" decoding="async" draggable="false" />
+            <figcaption class="asset__cap">Field Screen</figcaption>
+          </figure>
+
+          <figure class="asset" style="left:150vw; top:24vh; width:30vw; aspect-ratio: 3 / 2;">
+            <img src="media/vermillion/still-a.webp" alt="Vermillion Hearts — overworld" loading="lazy" decoding="async" draggable="false" />
+            <figcaption class="asset__cap">Overworld</figcaption>
+          </figure>
+
+          <!-- Full gameplay walkthrough -->
+          <figure class="asset asset--video" style="left:185vw; top:30vh; width:26vw; aspect-ratio: 16 / 9;">
+            <button class="video-poster" type="button" data-yt="XN-DWwubCXM" aria-label="Play Vermillion Hearts walkthrough">
+              <img src="https://i.ytimg.com/vi/XN-DWwubCXM/hqdefault.jpg" alt="" aria-hidden="true" loading="lazy" />
+              <span class="video-poster__play"></span>
+              <span class="video-poster__label">Vermillion Hearts &mdash; Gameplay Video</span>
+            </button>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ===================== 03 — STAR IS GONE ===================== -->
+      <section class="panel panel--project" id="stargone" data-index="03">
+        <div class="project">
+          <header class="project__head" style="left:15vw;">
+            <span class="project__index">03</span>
+            <h2 class="project__title project__title--two project__title--fx" data-fx="cyrillic">Star is<br />Gone</h2>
+          </header>
+
+          <span class="float-credit" style="left:15vw; top:18vh;">Date: Fall 2020</span>
+          <span class="float-credit" style="left:15vw; top:80vh;">Team Lead:<br />Benjamin Lock</span>
+
+          <figure class="asset pannable" style="left:30vw; top:18vh; width:40vw; height:62vh;">
+            <div class="pannable__inner">
+              <img src="media/stargone/still-a.webp" alt="Star is Gone — exploring the shadow world" loading="lazy" decoding="async" draggable="false" />
+            </div>
+            <figcaption class="drag-hint">DRAG_HERE</figcaption>
+            <figcaption class="asset__cap">Star is Gone &mdash; In-Game</figcaption>
+          </figure>
+
+          <figure class="asset" style="left:77vw; top:5vh; width:15vw; height:90vh;">
+            <img src="media/stargone/still-b.webp" alt="Star is Gone — silhouette against the dark" loading="lazy" decoding="async" draggable="false" />
+            <figcaption class="asset__cap">Silhouette Study</figcaption>
+          </figure>
+
+          <span class="float-credit" style="left:99vw; top:13vh;">Music &amp; Sound FX:<br />Benjamin Lock</span>
+
+          <!-- Interactive 3D model -->
+          <figure class="asset asset--model asset--model-dark" style="left:100vw; top:23vh; width:30vw; height:56vh;">
+            <model-viewer
+              src="media/stargone-protagonist.glb"
+              alt="Star is Gone protagonist — monochrome character model"
+              loading="eager"
+              reveal="auto"
+              camera-controls
+              disable-zoom
+              touch-action="pan-y"
+              autoplay
+              animation-name="Standing Idle"
+              auto-rotate
+              auto-rotate-delay="0"
+              rotation-per-second="14deg"
+              interaction-prompt="none"
+              shadow-intensity="0.9"
+              exposure="0.85"
+              environment-image="neutral"></model-viewer>
+            <figcaption class="model-hint model-hint--light">3D &middot; DRAG TO ROTATE</figcaption>
+            <figcaption class="asset__cap">Star is Gone &mdash; Protagonist</figcaption>
+          </figure>
+
+          <!-- Walkthrough video above the animated sequence -->
+          <figure class="asset asset--video" style="left:138vw; top:10vh; width:28vw; aspect-ratio: 16 / 9;">
+            <button class="video-poster" type="button" data-yt="fpk1uZ9n5v4" aria-label="Play Star is Gone walkthrough">
+              <img src="https://i.ytimg.com/vi/fpk1uZ9n5v4/hqdefault.jpg" alt="" aria-hidden="true" loading="lazy" />
+              <span class="video-poster__play"></span>
+              <span class="video-poster__label">Star is Gone &mdash; Walkthrough</span>
+            </button>
+          </figure>
+
+          <figure class="asset asset--video" style="left:138vw; top:54vh; width:34vw; height:36vh;">
+            <video src="media/stargone/seq.mp4" autoplay muted loop playsinline aria-label="Star is Gone — animated in-game sequence"></video>
+            <figcaption class="asset__cap">In-Game Sequence</figcaption>
+          </figure>
+
+          <div class="body-text" style="left:178vw; top:32vh; width:34vw;">
+            <p>
+              The player explores a dreamlike shadow of the waking world known only as &lsquo;The Within
+              Place&rsquo;. Scripted events, enemy AI, a dialogue system, and an open-ended design rule unite
+              to create a compelling, charming exercise in minimalism and eerie dread.
+            </p>
+          </div>
+
+          <!-- Catalog plate under the text -->
+          <figure class="asset" style="left:178vw; top:48vh; width:20vw; aspect-ratio: 1024 / 557;">
+            <img src="media/stargone/within.webp" alt="Star is Gone — The Within Place" loading="lazy" decoding="async" draggable="false" />
+            <figcaption class="asset__cap">The Within Place</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ===================== 04 — ABOUT / RESUME ===================== -->
+      <section class="panel panel--about" id="about" data-index="04">
+        <svg class="watermark" viewBox="0 0 900 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="0.5">
+            <circle cx="450" cy="300" r="280" /><circle cx="450" cy="300" r="210" /><circle cx="450" cy="300" r="140" />
+            <rect x="170" y="60" width="560" height="480" />
+            <line x1="170" y1="60" x2="730" y2="540" /><line x1="730" y1="60" x2="170" y2="540" />
+            <polygon points="450,30 760,300 450,570 140,300" />
+            <line x1="140" y1="300" x2="760" y2="300" /><line x1="450" y1="30" x2="450" y2="570" />
+            <polyline points="60,420 200,260 320,360 460,160 600,300 760,120" />
+            <polyline points="60,180 180,320 300,200 440,420 600,240 820,400" />
+            <rect x="300" y="200" width="300" height="200" />
+          </g>
+        </svg>
+
+        <div class="about">
+          <figure class="about__col about__col--photo">
+            <img src="media/ben-portrait.jpg" alt="Portrait of Benjamin Lock" loading="lazy" decoding="async" draggable="false" />
+            <figcaption class="asset__cap">Benjamin Lock</figcaption>
+          </figure>
+
+          <div class="about__col about__col--profile">
+            <h2 class="about__heading">About</h2>
+            <p class="about__bio">
+              My name&rsquo;s Ben, and I am a Game Designer and Programmer. I&rsquo;m a Georgia Tech alumnus
+              with a Bachelor&rsquo;s of Science in Computational Media, focused in Games &amp; Media.
+            </p>
+            <p class="about__bio">
+              I&rsquo;m passionate about experimental games that push the boundaries of digital aesthetics
+              and interaction, and love working in teams to bring strong, unique visions to life. I&rsquo;ve
+              led and delivered games for Georgia Tech&rsquo;s VGDEV Club, and have programmed and designed
+              over ten games of variable scale in Unity and Unreal.
+            </p>
+            <p class="about__bio">
+              My project experiences span a diverse array of development roles, including programming,
+              design, technical design, producing, and working as a 2D and 3D artist. I&rsquo;m proficient
+              in Unreal and Unity, along with C++, C#, Python and Java. I also have experience with Adobe
+              Creative Suite and 3D Modeling &amp; Animation software.
+            </p>
+          </div>
+
+          <div class="about__col">
+            <h3 class="about__subhead">Programming Languages</h3>
+            <ul class="timeline">
+              <li><span class="timeline__line"></span>C / C++</li>
+              <li><span class="timeline__line"></span>C#</li>
+              <li><span class="timeline__line"></span>Python</li>
+              <li><span class="timeline__line"></span>Java</li>
+            </ul>
+          </div>
+
+          <div class="about__col">
+            <h3 class="about__subhead">Tools</h3>
+            <ul class="timeline">
+              <li><span class="timeline__line"></span>Unity</li>
+              <li><span class="timeline__line"></span>Unreal Engine</li>
+              <li><span class="timeline__line"></span>Adobe Creative Suite</li>
+              <li><span class="timeline__line"></span>3D Modeling &amp; Animation</li>
+              <li><span class="timeline__line"></span>GBA Hardware</li>
+            </ul>
+          </div>
+
+          <div class="about__col">
+            <h3 class="about__subhead">Experience</h3>
+            <ul class="timeline">
+              <li><span class="timeline__line"></span>VGDEV Club &mdash; Georgia Tech</li>
+              <li><span class="timeline__line"></span>Starfall &mdash; Team Lead, 2022</li>
+              <li><span class="timeline__line"></span>Vermillion Hearts &mdash; Solo, 2021</li>
+              <li><span class="timeline__line"></span>Star is Gone &mdash; Team Lead, 2020</li>
+            </ul>
+          </div>
+
+          <div class="about__col about__col--contact">
+            <h3 class="about__subhead">Contact</h3>
+            <a class="contact__email" href="mailto:benjaminkylelock@gmail.com">benjaminkylelock@gmail.com</a>
+            <div class="links">
+              <a href="#" class="links__item links__item--a">Resume</a>
+              <a href="#" class="links__item links__item--b">GitHub</a>
+              <a href="#" class="links__item links__item--c">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pagination" aria-hidden="true">
+          <span data-page="1">1/4</span><span data-page="2">2/4</span><span data-page="3">3/4</span><span data-page="4">4/4</span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Playable GBA build — EmulatorJS, fully self-hosted from vendor/ejs/
+       (no CDN dependency; loader picks an mGBA core variant from cores/) -->
+  <script>
+    window.EJS_player = "#gba-player";
+    window.EJS_core = "gba";
+    window.EJS_gameName = "Vermillion Hearts";
+    window.EJS_gameUrl = "media/vermilion.gba";
+    window.EJS_pathtodata = "vendor/ejs/";
+    window.EJS_backgroundColor = "#120d18";
+    window.EJS_volume = 0.5;
+    window.EJS_onGameStart = function () {
+      var hint = document.querySelector(".model-hint--emu");
+      if (hint) hint.style.opacity = "0";
+      window.__emuActive = true; // hand the keyboard to the game
+    };
+  </script>
+  <script src="vendor/ejs/loader.js"></script>
+  <!-- 3D model viewer web component -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+  <!-- Smooth horizontal scroll engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="script.js?v=3"></script>
+</body>
+</html>

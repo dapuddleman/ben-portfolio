@@ -1,0 +1,339 @@
+/* ============================================================= */
+/*  BASE                                                          */
+/* ============================================================= */
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0a0a0a;
+  --paper: #ffffff;
+  --grey: #8a8a8a;
+  --grey-2: #555;
+  --hair: #e2e2e2;
+  --sidebar-w: 164px;
+  --pad: 5vw;
+}
+
+/* NOTE: no height:100% here — locking html/body to the viewport height kept
+   ScrollTrigger's pin-spacer from expanding the document on cold loads, so
+   lenis.limit stayed 0 and the page couldn't scroll until a reload. */
+html, body { min-height: 100%; background: var(--paper); color: var(--ink); }
+body {
+  font-family: "Archivo", -apple-system, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+img { display: block; width: 100%; height: 100%; object-fit: cover; user-select: none; }
+a { color: inherit; text-decoration: none; }
+
+/* ============================================================= */
+/*  SIDEBAR — opaque rail, content scrolls cleanly behind it      */
+/* ============================================================= */
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--sidebar-w);
+  z-index: 100;
+  background: var(--paper);
+  border-right: 1px solid var(--hair);
+  color: var(--ink);
+}
+.logo { position: absolute; top: 24px; left: 24px; }
+/* Logo art is white-on-transparent; invert renders it ink-black on the white rail.
+   44px (not 32) so the line-art interior detail survives. */
+.logo__mark { width: 44px; height: 44px; object-fit: contain; filter: invert(1); user-select: none; }
+
+.menu { position: absolute; top: 92px; left: 30px; right: 16px; }
+.menu ul { list-style: none; }
+.menu li { margin-bottom: 15px; }
+.menu a {
+  display: flex; align-items: baseline; gap: 8px;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.01em;
+  color: var(--ink); opacity: 0.55;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.menu a:hover { opacity: 1; transform: translateX(3px); }
+.menu a.is-active { opacity: 1; }
+.menu a.is-active .menu__num { opacity: 1; }
+.menu__num { font-size: 9px; opacity: 0.5; letter-spacing: 0.1em; }
+
+/* Rotated signature spine — vertically centered, clear of the menu */
+.brand {
+  position: absolute; left: 16px; top: 58%;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: center center; pointer-events: none;
+}
+.brand__name { white-space: nowrap; font-weight: 800; font-size: 14px; letter-spacing: 0.34em; }
+
+.sidebar__bottom {
+  position: absolute; left: 30px; bottom: 22px; right: 14px;
+  font-size: 10px; letter-spacing: 0.06em; opacity: 0.6;
+}
+
+/* Top scroll-progress bar */
+.progress {
+  position: fixed; top: 0; left: var(--sidebar-w); right: 0; height: 2px;
+  z-index: 99; background: var(--hair);
+}
+.progress__bar { display: block; width: 0%; height: 100%; background: var(--ink); }
+
+/* Scroll hint */
+.scroll-hint {
+  position: fixed; bottom: 26px; right: 30px; z-index: 95;
+  display: flex; align-items: center; gap: 10px;
+  font-size: 10px; letter-spacing: 0.32em; color: var(--ink);
+  transition: opacity 0.4s ease;
+}
+.scroll-hint__arrow { animation: nudge 1.6s ease-in-out infinite; }
+@keyframes nudge { 0%,100% { transform: translateX(0);} 50% { transform: translateX(6px);} }
+
+/* ============================================================= */
+/*  HORIZONTAL CANVAS                                             */
+/* ============================================================= */
+#scroll-container { overflow: hidden; }
+#track { display: flex; flex-wrap: nowrap; height: 100vh; will-change: transform; }
+
+.panel {
+  position: relative; height: 100vh; flex: 0 0 auto;
+  display: flex; align-items: center; background: var(--paper);
+}
+
+/* Panel widths — each is a deliberate, bounded canvas */
+.panel--intro { width: 100vw; padding-left: calc(var(--sidebar-w) + var(--pad)); padding-right: var(--pad); }
+#starfall  { width: 232vw; }  /* plates + walkthrough video extend the tail to 220vw */
+#vermilion { width: 216vw; }  /* walkthrough video closer ends at 211vw */
+#stargone  { width: 224vw; }
+.panel--about { width: 164vw; padding-left: calc(var(--sidebar-w) + var(--pad)); padding-right: 6vw; }  /* widened for the portrait column */
+
+/* ---------- INTRO ---------- */
+/* One source of truth for the title's size; the cascade stack and the FSR
+   stripes both derive their geometry from it, so they track at any width.
+   (Cap is unchanged — only sub-1460px widths render smaller than before.) */
+.panel--intro { --t-fs: clamp(56px, 10.5vw, 168px); }
+.intro { position: relative; z-index: 2; max-width: 720px; }  /* type rides above the stripes */
+.intro__title { font-size: var(--t-fs); line-height: 0.9; font-weight: 800; letter-spacing: -0.03em; }
+.intro__title span { display: block; }
+.intro__title--em { font-weight: 300; font-style: italic; letter-spacing: -0.02em; }
+.intro__role { margin-top: 26px; font-size: clamp(18px, 2vw, 26px); font-weight: 500; }
+.intro__lede { margin-top: 20px; max-width: 460px; font-size: 14px; line-height: 1.7; color: #444; }
+
+/* ---------- INTRO CASCADE STACK ---------- */
+.intro-stack {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  /* Track the title's true right edge: it starts after the sidebar + pad, and
+     "Benjamin" is ~4.51x the font size wide. Derives from the shared --t-fs. */
+  --title-right: calc(var(--sidebar-w) + var(--pad) + 4.51 * var(--t-fs));
+  /* Sit in the sketched right-hand spot on wide screens, but slide right to clear
+     the title (with a 3vw gap) once the screen gets narrow enough to collide. */
+  --stack-x: max(63vw, calc(var(--title-right) + 3vw));
+  /* One source of truth for card size. The zigzag's steps derive from it (not from
+     the viewport height), so the corner overlap stays constant at any window ratio. */
+  --item-w: clamp(230px, 19vw, 460px);
+  --item-h: calc(var(--item-w) * 9 / 16);
+  --step-y: calc(var(--item-h) * 0.79);  /* drop per card → ~21% corner overlap */
+  --step-x: calc(var(--item-w) * 0.37);  /* lateral zig of the middle card */
+  --count: 7;
+  /* Centre the column on the viewport so the tall cascade bleeds off both
+     the top and bottom edges. Middle card (index (count-1)/2) lands at 50vh. */
+  --stack-top: calc(50vh - (var(--count) - 1) / 2 * var(--step-y) - var(--item-h) / 2);
+}
+.intro-stack__item {
+  position: absolute;
+  width: var(--item-w);
+  height: var(--item-h);
+  overflow: hidden;
+  background: #f1f1f1;
+  /* zig-zag: each row (--i) steps down by step-y; odd rows (--k:1) kick right */
+  top: calc(var(--stack-top) + var(--i) * var(--step-y));
+  left: calc(var(--stack-x) + var(--k) * var(--step-x));
+  z-index: calc(var(--i) + 1);
+}
+.intro-stack__item img,
+.intro-stack__item video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.intro-stack__item--pixel img { image-rendering: pixelated; }
+
+/* ---------- PROJECTS ---------- */
+.project { position: relative; width: 100%; height: 100%; }
+
+.project__head { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; }
+.project__index { display: block; font-size: 12px; letter-spacing: 0.3em; color: var(--grey); margin-bottom: 12px; }
+.project__title { font-size: clamp(46px, 6.4vw, 104px); line-height: 0.88; font-weight: 800; letter-spacing: -0.02em; }
+
+/* Two-line titles shrink to live inside the 15vw→30vw column, clear of the hero.
+   Font and column both scale with vw, so the fit ratio holds at every width. */
+.project__title--two { font-size: clamp(28px, 3vw, 52px); line-height: 0.92; }
+
+/* Each game carries its own display face (nav/body stay Archivo for cohesion). */
+/* Vermillion Hearts — baroque, decaying-library serif (Book of the New Sun) */
+.project__title[data-fx="glitch"] {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: clamp(28px, 3vw, 56px);  /* sized for the longer "Vermillion"; same cap at 1920+, more slack below */
+  line-height: 0.96;
+  letter-spacing: 0.005em;
+}
+/* Star is Gone — cold Soviet teletype / samizdat mono (renders Cyrillic natively) */
+.project__title[data-fx="cyrillic"] {
+  font-family: "IBM Plex Mono", "Courier New", monospace;
+  font-weight: 500;
+  font-size: clamp(28px, 2.8vw, 54px);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+/* Starfall uses a circular graphic logotype instead of plain type */
+.project__title--graphic { font-size: 0; line-height: 0; }
+.project__title--graphic img {
+  width: clamp(140px, 12vw, 300px);  /* fits the 15vw→28vw column with ~1vw gap at every width */
+  aspect-ratio: 1 / 1;
+  height: auto;
+  object-fit: cover;    /* crop the cream bands above/below the disc */
+  border-radius: 50%;   /* present as the clean circular sticker on white */
+  animation: sticker-float 6s ease-in-out infinite;
+}
+@keyframes sticker-float {
+  0%, 100% { transform: translateY(0)     rotate(-1.5deg); }
+  50%      { transform: translateY(-10px) rotate(1.5deg);  }
+}
+
+/* ---- Per-letter title effects (Cyrillic shimmer / glitch) ---- */
+.project__title--fx { white-space: pre; }
+.fx-glyph { display: inline-block; }
+/* Star is Gone — letter flips to its Cyrillic look-alike */
+.fx-glyph.is-alt { color: var(--ink); }
+/* Vermillion — corrupted letter gets an RGB-split glitch */
+.fx-glyph.is-glitch {
+  text-shadow: -2px 0 #16e0e0, 2px 0 #ff2bd0;
+  transform: translateY(-1px) skewX(-8deg);
+}
+
+/* Floating editorial credits */
+.float-credit {
+  position: absolute; z-index: 5;
+  font-size: 10px; letter-spacing: 0.1em; line-height: 1.55; color: var(--grey-2);
+  max-width: 240px;
+}
+
+/* Assets */
+.asset { position: absolute; z-index: 3; overflow: hidden; background: #f1f1f1; }
+.asset__cap {
+  position: absolute; bottom: 10px; left: 12px; z-index: 4;
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: #fff;
+}
+.asset__cap--dark { color: var(--ink); }
+
+/* Video assets — native loops and YouTube embeds */
+.asset--video { background: #000; }
+.asset video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.asset--video iframe { display: block; width: 100%; height: 100%; border: 0; }
+.video-poster {
+  position: relative; display: block; width: 100%; height: 100%;
+  border: 0; padding: 0; cursor: pointer; background: #000; overflow: hidden;
+}
+.video-poster img { opacity: 0.85; }
+.video-poster__play {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 0; height: 0; border-style: solid;
+  border-width: 11px 0 11px 19px; border-color: transparent transparent transparent #fff;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,.4));
+  transition: transform 0.25s ease;
+}
+.video-poster:hover .video-poster__play { transform: translate(-50%,-50%) scale(1.2); }
+.video-poster__label {
+  position: absolute; bottom: 10px; left: 12px;
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #fff;
+}
+
+/* Pannable hero */
+.pannable { cursor: grab; }
+.pannable.is-dragging { cursor: grabbing; }
+.pannable__inner { width: 165%; height: 100%; will-change: transform; }
+.pannable__inner img { width: 100%; height: 100%; }
+.drag-hint {
+  position: absolute; top: 14px; right: 14px; z-index: 5;
+  font-size: 9px; letter-spacing: 0.25em; padding: 5px 9px;
+  border: 1px solid rgba(255,255,255,0.75); color: #fff;
+  background: rgba(0,0,0,0.22); backdrop-filter: blur(2px);
+  pointer-events: none; transition: opacity 0.4s ease;
+}
+
+/* Playable GBA build (EmulatorJS mounts inside) */
+.asset--emu { background: #120d18; }
+.asset--emu #gba-player { width: 100%; height: 100%; }
+.model-hint--emu { transition: opacity 0.6s ease; z-index: 6; }
+
+/* 3D model viewer */
+.asset--model { background: #f4f4f4; }
+.asset--model-dark { background: #111; }
+model-viewer { width: 100%; height: 100%; --poster-color: transparent; outline: none; }
+.model-hint {
+  position: absolute; top: 14px; left: 14px; z-index: 5;
+  font-size: 9px; letter-spacing: 0.25em; padding: 5px 9px;
+  border: 1px solid rgba(0,0,0,0.35); color: var(--ink);
+  background: rgba(255,255,255,0.5); backdrop-filter: blur(2px);
+  pointer-events: none;
+}
+.model-hint--light { border-color: rgba(255,255,255,0.5); color: #fff; background: rgba(0,0,0,0.3); }
+
+/* Body text */
+.body-text { position: absolute; z-index: 4; font-size: 13px; line-height: 1.6; color: #1a1a1a; }
+.body-text--cols { column-count: 2; column-gap: 26px; }
+.body-text__lead { font-weight: 700; }
+
+/* ============================================================= */
+/*  ABOUT / RESUME                                               */
+/* ============================================================= */
+.watermark {
+  position: absolute; top: 50%; left: 60%; transform: translate(-50%,-50%);
+  width: 130vh; height: 130vh; color: #eee; z-index: 0; pointer-events: none;
+}
+.about { position: relative; z-index: 2; display: flex; gap: 52px; align-items: flex-start; }
+.about__col { min-width: 150px; }
+.about__col--profile { max-width: 340px; }
+
+/* Portrait — framed like the project assets, anchored left of the bio */
+.about__col--photo {
+  position: relative; flex: 0 0 auto;
+  width: clamp(180px, 17vw, 260px); aspect-ratio: 3 / 4;
+  overflow: hidden; background: #f1f1f1; min-width: 0;
+}
+.about__col--photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.about__bio + .about__bio { margin-top: 12px; }
+.about__heading { font-size: 42px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 18px; }
+.about__bio { font-size: 13px; line-height: 1.7; color: #333; }
+.about__subhead { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--grey); margin-bottom: 16px; }
+
+.timeline { list-style: none; }
+.timeline li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 12px; padding: 9px 0; border-bottom: 1px solid var(--hair);
+}
+.timeline li:last-child { border-bottom: 0; }
+.timeline__line { display: inline-block; width: 18px; height: 1px; background: var(--ink); flex: 0 0 auto; }
+
+.about__col--contact { max-width: 260px; }
+.contact__email {
+  display: inline-block; font-size: 15px; font-weight: 600;
+  border-bottom: 1px solid var(--ink); padding-bottom: 2px; margin-bottom: 24px;
+  transition: opacity 0.2s ease;
+}
+.contact__email:hover { opacity: 0.6; }
+.links { display: flex; flex-direction: column; gap: 9px; }
+.links__item { font-size: 12px; letter-spacing: 0.06em; opacity: 0.8; width: fit-content; transition: opacity 0.2s ease; }
+.links__item:hover { opacity: 1; }
+.links__item--a { margin-left: 0; }
+.links__item--b { margin-left: 24px; }
+.links__item--c { margin-left: 10px; }
+
+.pagination { position: absolute; bottom: 34px; right: 6vw; display: flex; gap: 46px; z-index: 3; }
+.pagination span { font-size: 10px; letter-spacing: 0.2em; color: var(--hair); transition: color 0.3s ease; }
+.pagination span.is-active { color: var(--ink); }
+
+/* ============================================================= */
+/*  REDUCED MOTION                                              */
+/* ============================================================= */
+@media (prefers-reduced-motion: reduce) { .scroll-hint__arrow { animation: none; } }

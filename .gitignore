@@ -1,0 +1,5 @@
+# Backup of pre-compression source images (kept locally, not needed in the repo)
+media/_originals/
+
+# Per-machine Claude Code settings
+.claude/settings.local.json
