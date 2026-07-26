@@ -99,7 +99,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Panel widths — each is a deliberate, bounded canvas */
 .panel--intro { width: 100vw; padding-left: calc(var(--sidebar-w) + var(--pad)); padding-right: var(--pad); }
-#starfall  { width: 300vw; }  /* gameplay video now at 250vw + 28vw ends at 278vw */
+#starfall  { width: 320vw; }  /* gameplay video now at 280vw + 28vw ends at 308vw */
 #vermilion { width: 216vw; }  /* walkthrough video closer ends at 211vw */
 #stargone  { width: 224vw; }
 .panel--about { width: 164vw; padding-left: calc(var(--sidebar-w) + var(--pad)); padding-right: 6vw; }  /* widened for the portrait column */
