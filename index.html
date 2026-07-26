@@ -252,8 +252,10 @@
             <div id="gba-player"></div>
           </figure>
 
-          <!-- Field-screen plate sits just above the engine copy, centered over its 24vw column -->
-          <figure class="asset" style="left:75.5vw; top:26vh; width:17vw; aspect-ratio: 3 / 2;">
+          <!-- Field-screen plate sits just above the engine copy, centered over its 24vw column.
+               Kept small and high (vs. the vh-centered text below) so it stays clear of the text
+               even on short/wide windows, where a vw-sized image renders taller in vh terms. -->
+          <figure class="asset" style="left:78vw; top:8vh; width:12vw; aspect-ratio: 3 / 2;">
             <img src="media/vermillion/still-c.webp" alt="Vermillion Hearts — in-game still" loading="lazy" decoding="async" draggable="false" />
             <figcaption class="asset__cap">Field Screen</figcaption>
           </figure>
@@ -467,6 +469,7 @@
           <div class="about__col">
             <h3 class="about__subhead">Experience</h3>
             <ul class="timeline">
+              <li><span class="timeline__line"></span>Rockstar Games &mdash; AI Gameplay Programmer, 2023&ndash;Present</li>
               <li><span class="timeline__line"></span>VGDEV Club &mdash; Georgia Tech</li>
               <li><span class="timeline__line"></span>Starfall &mdash; Team Lead, 2022</li>
               <li><span class="timeline__line"></span>Vermillion Hearts &mdash; Solo, 2021</li>
@@ -478,9 +481,7 @@
             <h3 class="about__subhead">Contact</h3>
             <a class="contact__email" href="mailto:benjaminkylelock@gmail.com">benjaminkylelock@gmail.com</a>
             <div class="links">
-              <a href="#" class="links__item links__item--a">Resume</a>
-              <a href="#" class="links__item links__item--b">GitHub</a>
-              <a href="#" class="links__item links__item--c">LinkedIn</a>
+              <a href="https://www.linkedin.com/in/benjaminklock/" class="links__item" target="_blank" rel="noopener">LinkedIn</a>
             </div>
           </div>
         </div>

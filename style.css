@@ -330,9 +330,6 @@ model-viewer { width: 100%; height: 100%; --poster-color: transparent; outline: 
 .links { display: flex; flex-direction: column; gap: 9px; }
 .links__item { font-size: 12px; letter-spacing: 0.06em; opacity: 0.8; width: fit-content; transition: opacity 0.2s ease; }
 .links__item:hover { opacity: 1; }
-.links__item--a { margin-left: 0; }
-.links__item--b { margin-left: 24px; }
-.links__item--c { margin-left: 10px; }
 
 .pagination { position: absolute; bottom: 34px; right: 6vw; display: flex; gap: 46px; z-index: 3; }
 .pagination span { font-size: 10px; letter-spacing: 0.2em; color: var(--hair); transition: color 0.3s ease; }
