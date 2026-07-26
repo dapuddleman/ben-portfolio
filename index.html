@@ -110,30 +110,41 @@
           <span class="float-credit" style="left:15vw; top:13vh;">Date: Fall 2022</span>
           <span class="float-credit" style="left:15vw; top:82vh;">Team Lead:<br />Benjamin Lock</span>
 
-          <!-- Largest image — drag to pan -->
-          <figure class="asset pannable" style="left:28vw; top:12vh; width:47vw; height:73vh;">
-            <div class="pannable__inner">
-              <img src="media/starfall/shot-a.webp" alt="Starfall — combat in the red district" loading="lazy" decoding="async" draggable="false" />
-            </div>
-            <figcaption class="drag-hint">DRAG_HERE</figcaption>
-            <figcaption class="asset__cap">Starfall &mdash; In-Game</figcaption>
-          </figure>
-
-          <figure class="asset" style="left:80vw; top:7vh; width:16vw; height:45vh;">
-            <img src="media/starfall/shot-d.webp" alt="Starfall — canyon vista at 2x multiplier" loading="lazy" decoding="async" draggable="false" />
-            <figcaption class="asset__cap">Score Multiplier &mdash; Vista</figcaption>
-          </figure>
-
-          <!-- Ambient in-engine loop -->
-          <figure class="asset asset--video" style="left:80vw; top:60vh; width:27vw; height:32vh;">
+          <!-- SPREAD 1 — the hero. Video loop takes the big frame; pannable still is now the small companion. -->
+          <figure class="asset asset--video" style="left:28vw; top:12vh; width:47vw; height:73vh;">
             <video src="media/starfall/loop.mp4" autoplay muted loop playsinline aria-label="Starfall in-engine background loop"></video>
             <figcaption class="asset__cap">In-Engine Loop</figcaption>
           </figure>
 
-          <span class="float-credit" style="left:113vw; top:9vh;">Music &amp; Sound FX:<br />Benjamin Lock &amp; Nicklaus Loo</span>
+          <!-- SPREAD 2 — overview column: character-controller copy over the small hero still -->
+          <div class="body-text body-text--cols" style="left:80vw; top:22vh; width:30vw;">
+            <p>
+              <span class="body-text__lead">Starfall</span> is a third person action shooter wherein the
+              player must survive waves of increasingly difficult inter-dimensional adversaries using
+              Kuze&rsquo;s machine pistol, daggers, clone, and dash. I programmed a robust character
+              controller in C# that enabled smooth movement on angled and moving surfaces, movement
+              displacement abilities, input mirroring via the clone ability, and controlled a layer-based,
+              IK equipped animation system.
+            </p>
+          </div>
+          <figure class="asset asset--video" style="left:80vw; top:50vh; width:30vw; height:32vh;">
+            <video src="media/starfall/init.mp4" autoplay muted loop playsinline aria-label="Starfall — character controller and movement footage"></video>
+            <figcaption class="asset__cap">Character Controller &mdash; In-Game</figcaption>
+          </figure>
+          <span class="float-credit" style="left:80vw; top:87vh;">Lead UI/UX &amp; 2D Artist:<br />Erin O&rsquo;Connor</span>
 
-          <!-- Interactive 3D model -->
-          <figure class="asset asset--model" style="left:113vw; top:17vh; width:33vw; height:66vh;">
+          <!-- SPREAD 3 — full gameplay walkthrough -->
+          <figure class="asset asset--video" style="left:116vw; top:12vh; width:26vw; aspect-ratio: 16 / 9;">
+            <button class="video-poster" type="button" data-yt="oMOeFzSBXzI" aria-label="Play Starfall gameplay walkthrough">
+              <img src="https://i.ytimg.com/vi/oMOeFzSBXzI/hqdefault.jpg" alt="" aria-hidden="true" loading="lazy" />
+              <span class="video-poster__play"></span>
+              <span class="video-poster__label">Starfall &mdash; Gameplay Video</span>
+            </button>
+          </figure>
+
+          <!-- Kuze — the tall visual beat between chapters -->
+          <span class="float-credit" style="left:148vw; top:9vh;">Music &amp; Sound FX:<br />Benjamin Lock &amp; Nicklaus Loo</span>
+          <figure class="asset asset--model" style="left:148vw; top:17vh; width:28vw; height:66vh;">
             <model-viewer
               src="media/kuze.glb"
               alt="Kuze — Starfall protagonist, rigged character model"
@@ -155,21 +166,8 @@
             <figcaption class="asset__cap asset__cap--dark">Kuze &mdash; Starfall Protagonist</figcaption>
           </figure>
 
-          <!-- Editorial multi-column body -->
-          <div class="body-text body-text--cols" style="left:152vw; top:30vh; width:37vw;">
-            <p>
-              <span class="body-text__lead">Starfall</span> &mdash; (Team Lead) 3.4M/LA 3D Action-Shooter.
-              Held weekly meetings, managed Agile Scrum pipeline. Programmed AI, combat and movement systems,
-              designed enviro/phenomenal abilities and weapons, created 3D art and materials, coded
-              music-reactive shaders. Worked closely with, and facilitated communication across, artisans
-              to ensure project goals were met.
-            </p>
-          </div>
-
-          <span class="float-credit" style="left:152vw; top:84vh;">Lead UI/UX &amp; 2D Artist:<br />Erin O&rsquo;Connor</span>
-
-          <!-- Weapon design — wide 3D viewer sitting under the body text -->
-          <figure class="asset asset--model" style="left:152vw; top:48vh; width:24vw; aspect-ratio: 21 / 9;">
+          <!-- SPREAD 4 — chapter 02 / LEADERSHIP: machine pistol, then copy, then tunnel footage -->
+          <figure class="asset asset--model" style="left:182vw; top:12vh; width:34vw; aspect-ratio: 21 / 9;">
             <model-viewer
               src="media/machinepistol.glb"
               alt="Starfall machine pistol — weapon design model"
@@ -188,25 +186,30 @@
             <figcaption class="model-hint">3D &middot; DRAG TO ROTATE</figcaption>
             <figcaption class="asset__cap asset__cap--dark">Machine Pistol &mdash; Weapon Design</figcaption>
           </figure>
-
-          <!-- Catalog plates — small stills beside the weapon -->
-          <figure class="asset" style="left:178vw; top:48vh; width:14vw; aspect-ratio: 16 / 9;">
-            <img src="media/starfall/shot-b.webp" alt="Starfall — clone ability beams" loading="lazy" decoding="async" draggable="false" />
-            <figcaption class="asset__cap">Ability VFX</figcaption>
+          <div class="body-text" style="left:182vw; top:44vh; width:26vw;">
+            <p>
+              I served as team lead for a team of 20 talented developers who created Starfall,
+              conceptualizing the vision for the game and managing its development from start to finish.
+              I oversaw pipelines for programming, design, and art, planning milestones and deliverables
+              in accordance with Agile-Scrum requirements. Working across teams, and facilitating
+              communication between them, allowed me to utilize and reinforce my skills as a T-shaped
+              developer.
+            </p>
+          </div>
+          <figure class="asset asset--video" style="left:182vw; top:70vh; width:26vw; aspect-ratio: 16 / 9;">
+            <video src="media/starfall/tunnel.mp4" autoplay muted loop playsinline aria-label="Starfall — tunnel sequence footage"></video>
+            <figcaption class="asset__cap">Starfall &mdash; In-Game</figcaption>
           </figure>
-          <figure class="asset" style="left:178vw; top:70vh; width:14vw; aspect-ratio: 16 / 9;">
-            <img src="media/starfall/shot-c.webp" alt="Starfall — speed blur sequence" loading="lazy" decoding="async" draggable="false" />
-            <figcaption class="asset__cap">Music-Reactive Shader</figcaption>
-          </figure>
-
-          <!-- Full gameplay walkthrough -->
-          <figure class="asset asset--video" style="left:194vw; top:30vh; width:26vw; aspect-ratio: 16 / 9;">
-            <button class="video-poster" type="button" data-yt="oMOeFzSBXzI" aria-label="Play Starfall gameplay walkthrough">
-              <img src="https://i.ytimg.com/vi/oMOeFzSBXzI/hqdefault.jpg" alt="" aria-hidden="true" loading="lazy" />
-              <span class="video-poster__play"></span>
-              <span class="video-poster__label">Starfall &mdash; Gameplay Video</span>
-            </button>
-          </figure>
+          <!-- SPREAD 5 — weapons copy (clears the enlarged pistol, which now runs to 216vw) -->
+          <div class="body-text" style="left:220vw; top:18vh; width:25vw;">
+            <p>
+              After technically designing and programming an extendable, designer-friendly, scriptable
+              object-based weapon system, I designed the player weapon and all enemy weapons. Gaussian
+              distribution algorithms were leveraged to enable variable bullet spread for both hitscan
+              and projectile-based weapons. A diverse and exciting array of weapons were created for
+              enemy use, spanning rockets, burst rifles, and heal rays.
+            </p>
+          </div>
         </div>
       </section>
 

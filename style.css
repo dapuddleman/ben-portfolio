@@ -99,7 +99,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Panel widths — each is a deliberate, bounded canvas */
 .panel--intro { width: 100vw; padding-left: calc(var(--sidebar-w) + var(--pad)); padding-right: var(--pad); }
-#starfall  { width: 232vw; }  /* plates + walkthrough video extend the tail to 220vw */
+#starfall  { width: 270vw; }  /* weapons text (220vw + 25vw) ends at 245vw */
 #vermilion { width: 216vw; }  /* walkthrough video closer ends at 211vw */
 #stargone  { width: 224vw; }
 .panel--about { width: 164vw; padding-left: calc(var(--sidebar-w) + var(--pad)); padding-right: 6vw; }  /* widened for the portrait column */
@@ -192,11 +192,6 @@ a { color: inherit; text-decoration: none; }
   height: auto;
   object-fit: cover;    /* crop the cream bands above/below the disc */
   border-radius: 50%;   /* present as the clean circular sticker on white */
-  animation: sticker-float 6s ease-in-out infinite;
-}
-@keyframes sticker-float {
-  0%, 100% { transform: translateY(0)     rotate(-1.5deg); }
-  50%      { transform: translateY(-10px) rotate(1.5deg);  }
 }
 
 /* ---- Per-letter title effects (Cyrillic shimmer / glitch) ---- */
