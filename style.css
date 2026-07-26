@@ -99,7 +99,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Panel widths — each is a deliberate, bounded canvas */
 .panel--intro { width: 100vw; padding-left: calc(var(--sidebar-w) + var(--pad)); padding-right: var(--pad); }
-#starfall  { width: 270vw; }  /* weapons text (220vw + 25vw) ends at 245vw */
+#starfall  { width: 275vw; }  /* shader spread (222vw + 28vw) ends at 250vw */
 #vermilion { width: 216vw; }  /* walkthrough video closer ends at 211vw */
 #stargone  { width: 224vw; }
 .panel--about { width: 164vw; padding-left: calc(var(--sidebar-w) + var(--pad)); padding-right: 6vw; }  /* widened for the portrait column */
@@ -214,6 +214,13 @@ a { color: inherit; text-decoration: none; }
 
 /* Assets */
 .asset { position: absolute; z-index: 3; overflow: hidden; background: #f1f1f1; }
+
+/* Flex column of assets (e.g. Starfall's pistol/copy/tunnel stack) — the middle
+   item(s) sit exactly centered in the gap between the two flanking visuals,
+   regardless of their exact rendered heights. Children opt out of the
+   position:absolute their own classes normally set. */
+.asset-column { position: absolute; display: flex; flex-direction: column; justify-content: space-between; }
+.asset-column > .asset, .asset-column > .body-text { position: static; }
 .asset__cap {
   position: absolute; bottom: 10px; left: 12px; z-index: 4;
   font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: #fff;
@@ -276,6 +283,9 @@ model-viewer { width: 100%; height: 100%; --poster-color: transparent; outline: 
 /* Body text */
 .body-text { position: absolute; z-index: 4; font-size: 13px; line-height: 1.6; color: #1a1a1a; }
 .body-text--cols { column-count: 2; column-gap: 26px; }
+/* Force the column break here instead of letting the browser balance columns
+   at an arbitrary (often mid-sentence) point. */
+.body-text__col-break { break-before: column; }
 .body-text__lead { font-weight: 700; }
 
 /* ============================================================= */
