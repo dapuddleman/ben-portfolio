@@ -246,47 +246,74 @@
           <span class="float-credit" style="left:15vw; top:16vh;">Date: Fall 2021</span>
           <span class="float-credit" style="left:15vw; top:80vh;">All art, programming,<br />design and writing by:<br />Benjamin Lock</span>
 
-          <!-- Playable build — EmulatorJS (mGBA core), GBA-native 3:2 screen.
-               Swap media/vermilion.gba for the real Vermillion Hearts ROM. -->
-          <figure class="asset asset--emu" id="gba-emu" style="left:30vw; top:16vh; width:40vw; aspect-ratio: 3 / 2;" aria-label="Vermillion Hearts — playable GBA build">
+          <!-- SPREAD 1 — the hero: playable build (EmulatorJS, mGBA core, GBA-native 3:2),
+               vertically centered on the title. top = 50vh minus half its height (40vw * 2/3 / 2). -->
+          <figure class="asset asset--emu" id="gba-emu" style="left:28vw; top:calc(50vh - 40vw / 3); width:40vw; aspect-ratio: 3 / 2;" aria-label="Vermillion Hearts — playable GBA build">
             <div id="gba-player"></div>
-            <figcaption class="model-hint model-hint--light model-hint--emu">GBA &middot; PLAYABLE &mdash; CLICK TO START</figcaption>
           </figure>
 
-          <figure class="asset asset--glitch" style="left:72vw; top:11vh; width:17vw; aspect-ratio: 16 / 9;">
-            <img src="media/vermillion/seq.webp" alt="Vermillion Hearts — animated glitch sequence" loading="lazy" decoding="async" draggable="false" />
-            <figcaption class="asset__cap">Glitch Sequence</figcaption>
-          </figure>
-
-          <figure class="asset" style="left:72vw; top:49vh; width:23vw; aspect-ratio: 3 / 2;">
-            <img src="media/vermillion/still-b.webp" alt="Vermillion Hearts — conversation system in-game" loading="lazy" decoding="async" draggable="false" />
-            <figcaption class="asset__cap">Conversation System</figcaption>
-          </figure>
-
-          <div class="body-text" style="left:108vw; top:24vh; width:33vw;">
-            <p>
-              <span class="body-text__lead">Vermillion Hearts</span> &mdash; (Sole Responsibility) A C-based
-              Game Boy Advance RPG created as a final project for my Media Device Architecture course.
-              Leveraged custom GBA tools and hardware to create authentic graphical and auditory glitch-driven
-              mechanics to give life to a disintegrating, abandoned fantasy RPG world, along with programming
-              and designing a conversation system, a series of player abilities, and the puzzles that they
-              serve to solve.
-            </p>
-          </div>
-
-          <!-- Catalog plate under the text -->
-          <figure class="asset" style="left:108vw; top:48vh; width:18vw; aspect-ratio: 3 / 2;">
+          <!-- Field-screen plate sits just above the engine copy, centered over its 24vw column -->
+          <figure class="asset" style="left:75.5vw; top:26vh; width:17vw; aspect-ratio: 3 / 2;">
             <img src="media/vermillion/still-c.webp" alt="Vermillion Hearts — in-game still" loading="lazy" decoding="async" draggable="false" />
             <figcaption class="asset__cap">Field Screen</figcaption>
           </figure>
 
-          <figure class="asset" style="left:150vw; top:24vh; width:30vw; aspect-ratio: 3 / 2;">
+          <!-- Engine copy — centered against the emulator's midline -->
+          <div class="body-text" style="left:72vw; top:50vh; width:24vw; transform: translateY(-50%);">
+            <p>
+              <span class="body-text__lead">Vermillion</span> Hearts is a short, experimental 2D
+              role-playing game created entirely in a custom C-based engine, built from the ground up for
+              Game Boy Advance hardware and emulators. I designed and implemented every element of the
+              game, from its collision map-altering abilities to a full conversation system. I leveraged
+              Direct Memory Access to create parallax backgrounds, authentic glitch effects, scrambled
+              palettes, and dynamic sound effects. Hardware interrupts drive player input and interaction
+              mode changes.
+            </p>
+          </div>
+
+          <!-- SPREAD 2 — the dying world: copy over the opening sequence footage -->
+          <div class="body-text body-text--cols" style="left:102vw; top:18vh; width:30vw;">
+            <p>
+              <span class="body-text__lead">As</span> the battery in the game&rsquo;s cartridge begins to
+              corrode and die, what was once a traditional fantasy world begins to erode into something
+              more scattered and sinister. Characters become aware of their artificiality, the royal court
+              desperately searches for a solution, the streets of the kingdom fall away into garbled
+              static. I designed and implemented a sprite stealing mechanic that enables the player to
+              take the form of any character, and use their unique abilities to solve puzzles. Some
+              characters enable new conversation options, while others can directly alter the appearance
+              and traversable space of the world by changing the way collision maps are read.
+            </p>
+          </div>
+          <figure class="asset" style="left:102vw; top:52vh; width:26vw; aspect-ratio: 16 / 9;">
             <img src="media/vermillion/still-a.webp" alt="Vermillion Hearts — overworld" loading="lazy" decoding="async" draggable="false" />
             <figcaption class="asset__cap">Overworld</figcaption>
           </figure>
 
+          <!-- Catalog plates — the visual beat between chapters -->
+          <figure class="asset asset--video" style="left:136vw; top:14vh; width:30vw; aspect-ratio: 3 / 2;">
+            <video src="media/vermillion/opening-seq.mp4" autoplay muted loop playsinline aria-label="Vermillion Hearts — opening sequence"></video>
+            <figcaption class="asset__cap">Opening Sequence</figcaption>
+          </figure>
+          <figure class="asset" style="left:144vw; top:58vh; width:22vw; aspect-ratio: 3 / 2;">
+            <img src="media/vermillion/still-b.webp" alt="Vermillion Hearts — conversation system in-game" loading="lazy" decoding="async" draggable="false" />
+          </figure>
+
+          <!-- SPREAD 3 — decay & glitchcraft: copy over the glitch sequence, field-screen plate below -->
+          <div class="body-text" style="left:174vw; top:14vh; width:26vw;">
+            <p>
+              <span class="body-text__lead">Because</span> the game portrays a deteriorating digital
+              world, I placed a huge emphasis on designing and implementing authentic glitch effects and
+              mechanics. Audio sample arrays are injected with random data to simulate decay, printed
+              characters have a small chance to point to other areas in memory, and backgrounds contrast
+              hand-crafted pixel art with flickering DMA swaps.
+            </p>
+          </div>
+          <figure class="asset asset--glitch" style="left:174vw; top:42vh; width:26vw; aspect-ratio: 16 / 9;">
+            <img src="media/vermillion/seq.webp" alt="Vermillion Hearts — animated glitch sequence" loading="lazy" decoding="async" draggable="false" />
+          </figure>
+
           <!-- Full gameplay walkthrough -->
-          <figure class="asset asset--video" style="left:185vw; top:30vh; width:26vw; aspect-ratio: 16 / 9;">
+          <figure class="asset asset--video" style="left:206vw; bottom:40vh; width:26vw; aspect-ratio: 16 / 9;">
             <button class="video-poster" type="button" data-yt="XN-DWwubCXM" aria-label="Play Vermillion Hearts walkthrough">
               <img src="https://i.ytimg.com/vi/XN-DWwubCXM/hqdefault.jpg" alt="" aria-hidden="true" loading="lazy" />
               <span class="video-poster__play"></span>
